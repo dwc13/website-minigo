@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Information</title>
+</head>
+<body>
+    <h1>Information Detail Log</h1>
+    <!-- Add User Form -->
+    <form method="POST" action="/adduser">
+        <input type="text" name="username" placeholder="New Username">
+        <input type="password" name="password" placeholder="New Password">
+        <input type="submit" value="Add User">
+    </form>
+
+    <!-- Remove User Form -->
+    <form method="POST" action="/removeuser">
+        <input type="text" name="username" placeholder="Username to Remove">
+        <input type="submit" value="Remove User">
+    </form>
+
+    <form method="POST" action="/logout">
+        <input type="submit" value="Logout">
+    </form>
+</body>
+</html>
+
