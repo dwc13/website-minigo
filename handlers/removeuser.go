@@ -8,9 +8,10 @@ import (
 func RemoveUser(w http.ResponseWriter, r *http.Request) {
     if r.Method == "POST" {
         r.ParseForm()
+        id := r.FormValue("id")
         username := r.FormValue("username")
-        database.DB.Where("username = ?", username).Delete(&database.User{})
-        http.Redirect(w, r, "/info", http.StatusFound)
+        database.DB.Where("id = ? AND username = ?", id, username).Delete(&database.User{})
+        http.Redirect(w, r, "/admin", http.StatusFound)
     }
 }
 

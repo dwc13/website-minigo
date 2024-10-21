@@ -5,6 +5,7 @@ go 1.23.1
 require (
 	github.com/gorilla/mux v1.8.1
 	github.com/gorilla/sessions v1.4.0
+	golang.org/x/crypto v0.28.0
 	gorm.io/driver/sqlite v1.5.6
 	gorm.io/gorm v1.25.12
 )

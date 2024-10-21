@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <style>
+        .error { color: red; }
+    </style>
 </head>
 <body>
     <form method="POST" action="/">
@@ -12,6 +15,9 @@
         <input type="password" id="password" name="password"><br><br>
         <input type="submit" value="Login">
     </form>
+    {{if .}}
+        <p class="error">{{.}}</p>
+    {{end}}
 </body>
 </html>
 
