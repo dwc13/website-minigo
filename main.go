@@ -1,6 +1,9 @@
 package main
 
 import (
+	"os"
+	"os/signal"
+	"syscall"
     "net/http"
     "github.com/gorilla/mux"
     "website-minigo/database"
@@ -9,7 +12,17 @@ import (
 
 func main() {
     database.InitDatabase()
-    database.Seed()  // Seed the database with initial users
+
+	// Set up a channel to listen for interrupt signals
+    c := make(chan os.Signal, 1)
+    signal.Notify(c, os.Interrupt, syscall.SIGTERM)
+
+    // Run cleanup on signal interrupt
+    go func() {
+        <-c
+        database.CloseDatabase()
+        os.Exit(0)
+    }()
 
     r := mux.NewRouter()
     r.HandleFunc("/", handlers.Login).Methods("GET", "POST")

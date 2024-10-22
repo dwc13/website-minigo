@@ -1,1 +1,6 @@
+#Environment Key
+.env
+
+# DONT UPLOAD DATABASE
+encrypted.db
 users.db

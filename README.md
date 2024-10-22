@@ -10,7 +10,7 @@ This project aims to create a secure and efficient web application using the GO 
 - [x] **Input Sterilization**: Implement measures to sanitize user input and protect against SQL injection and other malicious attacks.
 - [x] **Password bcrypt Hashing**: Securely hash user passwords before storing them in the database.
 - [x] **User Authentication**: Develop a robust authentication mechanism to manage user sessions and permissions.
-- [ ] **Database Encryption**: Ensure the database is encrypted to protect sensitive user data.
+- [x] **Database Encryption**: Ensure the database is encrypted to protect sensitive user data.
 - [ ] **Mobile Development**: Extend the application to iOS and Android platforms using relevant tools.
 - **Additional Tasks**:
   - [ ] Enhance user interface and experience
@@ -32,20 +32,13 @@ cd website-minigo
 go mod tidy
 ```
 
-### Seeding the Database
+### Database Encryption
 
-The initial run will seed the database with an admin user (username: admin, password: adminpassword). After the first run, you should comment out the seeding line in main.go to prevent reseeding:
+The database is encrypted using AES encryption.
+Make sure to set the `DB_SECRET_KEY` environment variable in your `.env` file:
 
-File Path: `main.go`
-
-```go
-func main() {
-    database.InitDatabase()
-    // Comment out the following line after the first run
-    // database.Seed()
-    r := mux.NewRouter()
-    // ... rest of the code
-}
+```plaintext
+DB_SECRET_KEY=your_32_byte_secret_key_goes_here!
 ```
 
 ### Run
@@ -55,5 +48,6 @@ go run main.go
 ```
 
 This will start the web application on http://localhost:8080.
+Logs will be generated for database creation, encryption, decryption, and deletion processes for better visibility during runtime.
 
 Feel free to tweak. 🤓
